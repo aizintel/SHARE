@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Share Boost</title>
+   </head>
+   <body>
+      <div class="wrapper-container">
+         <div class="container">
+            <h1>SHARE BOOST</h1>
+            <p>A user-friendly automated website that utilizes your browser's cookies to streamline the process of sharing posts on Facebook using the provided URL.</p>
+         </div>
+         <div class="form-wrapper">
+            <form onsubmit="submitForm(event)" class="form-container">
+               <div class="form-item">
+                  <label for="cookies">APPSTATE:</label>
+                  <input type="text" id="cookies" name="cookie" placeholder="">
+               </div>
+               <div class="form-item">
+                  <label for="urls">LINK:</label>
+                  <input type="text" id="urls" name="url" placeholder="">
+               </div>
+               <div class="form-item">
+                  <label for="amounts">LIMIT:</label>
+                  <input type="text" id="amounts" name="amount" placeholder="">
+               </div>
+               <div class="form-item">
+                  <label for="intervals">DELAY:</label>
+                  <input type="text" id="intervals" name="interval" placeholder="" pattern="[0-9]*">
+               </div>
+               <div class="form-item">
+                  <button type="submit" onclick="submitForm()" id="submit-button">Submit</button>
+               </div>
+               <div class="form-item">
+                  <div id="result"></div>
+               </div>
+            </form>
+         </div>
+         <div class="container" id="process-container">
+            <h1>SHARE BOOST</h1>
+            <h4>PROCESSING:</h4>
+            <div id="processing">
+            </div>
+         </div>
+         <div class="container">
+            <h1>SHARE BOOST</h1>
+            <h4>ABOUT US</h4>
+            <p>You can find our open-source repository <a href="https://www.pornhub.com" style="text-decoration: none; color: blue;">here</a>, encouraging developers to contribute, learn, and customize the website</p>
+         </div>
+      </div>
+      <style>
+         body, html {
+         margin: 0;
+         }
+         body {
+         padding: 20px;
+         font-family: 'Poppins', sans-serif;
+         background: #000;
+         color: #898989;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         .container {
+         background-color: #0a0a0a;
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         padding: 20px;
+         margin: 20px auto;
+         overflow: auto;
+         }
+         .form-item {
+         padding: 8px;
+         }
+         h1 {
+         color: #343a40;
+         }
+         .form-item label {
+         font-size: 13px;
+         color: #495057;
+         margin-bottom: 5px; 
+         display: block; 
+         }
+         input, button {
+         background: #000;
+         color: #fff; 
+         border: solid 1px #222;
+         box-sizing: border-box;
+         width: 100%;
+         margin-bottom: 10px;
+         padding: 10px;
+         border-radius: 4px;
+         font-size: 16px;
+         }
+         button {
+         cursor: none;
+         color: #0a0a0a;
+         background-color: #ededed;
+         }
+         button:hover {
+         background: #CCC;
+         }
+         #result {
+         display: none;
+         text-align: center;
+         background-color: #ededed;
+         border: solid 1px #222;
+         padding: 10px;
+         border-radius: 4px;
+         color: #0a0a0a;
+         }
+         #process {
+         }
+         .current-online {
+         font-size: 13px;
+         background: #0a0a0a;
+         padding: 10px;
+         color: #898989;
+         border: solid 1px #898989;
+         border-radius: 4px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         margin-bottom: 10px;
+         overflow: auto;
+         white-space: nowrap; 
+         }
+      </style>
+      <script>
+         async function submitForm() {
+           event.preventDefault();
+           const result = document.getElementById('result');
+           const button = document.getElementById('submit-button');
+           try {
+             result.style.display = 'block';
+             button.style.display = 'none';
+             const response = await fetch('/api/submit', {
+               method: 'POST',
+               body: JSON.stringify({
+                 cookie: document.getElementById('cookies').value,
+                 url: document.getElementById('urls').value,
+                 amount: document.getElementById('amounts').value,
+                 interval: document.getElementById('intervals').value,
+               }),
+               headers: {
+                 'Content-Type': 'application/json',
+               },
+             });
+             const data = await response.json();
+         
+             if (data.status === 200) {
+               result.style.backgroundColor = '#32ff0dc7';
+               result.style.color = '#222';
+               result.innerHTML = 'Submitted successfully!';
+               button.style.display = 'block';
+             } else {
+               result.style.backgroundColor = '#3D1619';
+               result.style.color = '#FE6265';
+               result.innerHTML = 'Error: ' + data.error;
+               button.style.display = 'block';
+             }
+           } catch (e) {
+             console.error(e);
+           }
+         }
+         
+         async function linkOfProcessing() {
+           try {
+             const container = document.getElementById('processing');
+             const processContainer = document.getElementById('process-container');
+             const initialResponse = await fetch('/total');
+         
+             if (!initialResponse.ok) {
+               throw new Error(`Failed to fetch: ${initialResponse.status} - ${initialResponse.statusText}`);
+             }
+         
+             const initialData = await initialResponse.json();
+             if (initialData.length === 0) {
+               processContainer.style.display = 'none';
+               return;
+             }
+             initialData.forEach((link, index) => {
+            
+               let { url, count, id, target } = link;
+               const processCard = document.createElement('div');
+               processCard.classList.add('current-online');
+         
+               const text = document.createElement('h4');
+               text.classList.add('count-text');
+               text.innerHTML = `${index + 1}. Post: ${id} | ${count}/${target}`;
+         
+               processCard.appendChild(text);
+               container.appendChild(processCard);
+         
+               const intervalId = setInterval(async () => {
+                 const updateResponse = await fetch('/total');
+         
+                 if (!updateResponse.ok) {
+                   console.error(`Failed to fetch update: ${updateResponse.status} - ${updateResponse.statusText}`);
+                   return;
+                 }
+         
+                 const updateData = await updateResponse.json();
+                 const updatedLink = updateData.find((link) => link.id === id);
+         
+                 if (updatedLink) {
+                   let { count } = updatedLink;
+                   update(processCard, count, id, index);
+                 }
+               }, 1000);
+             });
+         
+           } catch (error) {
+             console.error(error);
+           }
+         }
+         
+         function update(card, count, id, index) {
+           let container = card.querySelector('.count-text');
+           container.textContent = `${index + 1}. ID: ${id} | ${count}/${target}`;
+         }
+         
+         linkOfProcessing();
+         
+      </script>
+   </body>
+</html>
