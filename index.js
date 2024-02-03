@@ -12,6 +12,7 @@ app.get('/total', (req, res) => {
     url: link.url,
     count: link.count,
     id: link.id,
+    target: link.target,
   }));
   res.json(JSON.parse(JSON.stringify(data || [], null, 2)));
 });
@@ -58,7 +59,7 @@ async function share(cookies, url, amount, interval) {
     url,
     id,
     count: 0,
-    targe: amount,
+    target: amount,
   });
   const headers = {
     'accept': '*/*',
