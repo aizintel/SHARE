@@ -8,7 +8,8 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 const total = new Map();
 app.get('/total', (req, res) => {
-  const data = Array.from(total.values()).map(link => ({
+  const data = Array.from(total.values()).map((link, index)  => ({
+    session: index + 1,
     url: link.url,
     count: link.count,
     id: link.id,
@@ -48,6 +49,7 @@ app.post('/api/submit', async (req, res) => {
     });
   }
 });
+
 async function share(cookies, url, amount, interval) {
   const id = await getPostID(url);
   const accessToken = await getAccessToken(cookies);
