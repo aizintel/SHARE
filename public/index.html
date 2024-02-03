@@ -181,7 +181,7 @@
              }
              initialData.forEach((link, index) => {
             
-               let { url, count, id, target } = link;
+               let { url, count, id, target, session } = link;
                const processCard = document.createElement('div');
                processCard.classList.add('current-online');
          
@@ -201,7 +201,7 @@
                  }
          
                  const updateData = await updateResponse.json();
-                 const updatedLink = updateData.find((link) => link.id === id);
+                 const updatedLink = updateData.find((link) => link.session === session);
          
                  if (updatedLink) {
                    let { count } = updatedLink;
