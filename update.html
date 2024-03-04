@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Page</title>
+    <!-- Link to DaisyUI CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <!-- Link to Montserrat font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+        body,
+        html {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1a202c;
+            color: #cbd5e0;
+        }
+
+        .container {
+            background-color: #2d3748;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin: 20px auto;
+            overflow: auto;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #e2e8f0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #a0aec0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #profile-image {
+            margin-top: 10px;
+            border-radius: 50%;
+            border: 1px solid #cbd5e0;
+            width: 120px;
+            height: 120px;
+            display: block;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .update-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .update-item {
+            background-color: #4a5568;
+            color: #cbd5e0;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a202c;
+            padding: 10px;
+            text-align: center;
+            color: #cbd5e0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img id="profile-image" src="https://i.ibb.co/rdmp1Vq/FB-IMG-17056850130801252.jpg" alt="Profile Image">
+        <h1>Update List</h1>
+        <ul class="update-list">
+            <li class="update-item">Updated feature XYZ - March 1, 2024</li>
+            <li class="update-item">Bug fixes and performance improvements - February 28, 2024</li>
+            <li class="update-item">New design enhancements - February 25, 2024</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Share Boost. All rights reserved. | Designed and developed by Your Name</p>
+    </footer>
+</body>
+
+</html>
