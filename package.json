@@ -14,17 +14,3 @@
   "scripts": {
     "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gr33ntii/shield_facebook.git"
-  },
-  "keywords": [
-    "UwU"
-  ],
-  "author": "Gr33ntii",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gr33ntii/shield_facebook/issues"
-  },
-  "homepage": "https://github.com/gr33ntii/shield_facebook#readme"
-}
