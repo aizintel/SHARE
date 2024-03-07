@@ -13,7 +13,7 @@ app.get("/", (req, res) =>
 );
 
 app.get("/khienfb", (req, res) => {
-  res.sendFile(__dirname + "/shield/index.html", (err) => {
+  res.sendFile(__dirname + "/public/index.html", (err) => {
     if (err) {
       console.log(err);
     }
